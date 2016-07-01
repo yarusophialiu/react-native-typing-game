@@ -3,3 +3,5 @@
 ## Inline Exercises
 
 ## Pair Programming Exercise
+
+1. [Spreadsheet](spreadsheet.md)
