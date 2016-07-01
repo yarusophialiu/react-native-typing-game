@@ -10,18 +10,15 @@ arrays into HTML tables using templates.
 1. Install an ESLint plugin for your text editor of choice.
   - TODO Atom
   - TODO Sublime
+1. Use ESLint to find the errors in `app.js` and fix them.
 1. There's a JSON file with 2-dimensional array data about some random movies
    in `data.json`. Check it out.
 1. Update `index.hbs` to render data contained in `data.json` into tabular
    format. Note:<br>
    - Contents of `data.json` are available in `index.hbs` as the variable
      `data`.
-   - Use Handlebars `{{#each}}` directives to iterate over rows.
-     Each row should be inside a `<tr>` element.
-   - Columns in the first row of should be rendered as table headers inside
-     `<th>` elements.
-   - Columns in the subsequent rows of should be rendered as table cells
-     inside `<td>` elements.
+   - Use Handlebars `{{#each}}` directives to iterate over rows. Then
+     inside each row iterate over columns by using `{{#each}}` again:
 
      ```
      {{#each data}}
@@ -32,6 +29,11 @@ arrays into HTML tables using templates.
      {{/each}}
      ```
 
+   - Each row should be inside a `<tr>` element.
+   - Columns in the first row of should be rendered as table headers inside
+     `<th>` elements.
+   - Columns in the subsequent rows of should be rendered as table cells
+     inside `<td>` elements.
    - `index.hbs` contains sample code for rendering tables in HTML. You can
      delete this code.
 
