@@ -36,3 +36,5 @@ arrays into HTML tables using templates.
      delete this code.
 
 Sample correct output:
+
+![](img/output.png)
