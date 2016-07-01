@@ -1,4 +1,4 @@
-# React Spreadsheet
+# Pair programming exercise: React sheet
 
 ## Goal
 

@@ -4,4 +4,4 @@
 
 ## Pair Programming Exercise
 
-1. [Spreadsheet](spreadsheet.md)
+1. [React sheet](sheet.md)
