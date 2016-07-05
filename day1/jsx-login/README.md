@@ -19,7 +19,8 @@ Generate this HTML login form in React using JSX:
 </form>
 ```
 
-1. Open CODEPEN LINK TODO and fork it.
-1. Add JSX to where it says `YOUR CODE HERE`.
+1. Open `week06/day1/jsx-login/client/index.js`
+1. Start your server `npm start`
+1. Add JSX to where it says `YOUR CODE INSIDE THE FORM`.
 1. Make sure your login form is properly rendered using
    DevTools HTML inspector.
