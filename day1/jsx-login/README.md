@@ -1,4 +1,4 @@
-# Inline Exercise: Static login form, JSX edition
+# Inline Exercise: JSX static login form
 
 ## Goal
 

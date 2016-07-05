@@ -5,7 +5,7 @@
 The goal of this exercise is to create a reusable login
 form element in React.
 
-## Time limit 10 minutes
+## Time limit 15 minutes
 
 ## Instructions
 
@@ -27,11 +27,9 @@ In Handlebars this would look like:
 </form>
 ```
 
-1. Open CODEPEN LINK TODO and fork it.
+1. Open `week06/day1/custom-login/client/index.js`
 1. Update `.render()` where it says `YOUR CODE HERE` to add JSX code
    for login form.
-1. Pass in parameters into JSX using `this.props` and
-   `this.props.children`
-1. Add `action`, `method` and `submitLabel` properties to the `<MyForm />`
-   call. Update the values of these properties and  ensure that they are
-   properly renderd using DevTools inpector.
+1. Try changing `action`, `method` and `submitLabel` properties in the
+   `<MyForm />` and make sure they are properly rendered using DevTools
+   inspector.

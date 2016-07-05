@@ -1,4 +1,4 @@
-# Inline Exercise: Static login form
+# Inline Exercise: React static login form
 
 ## Goal
 
