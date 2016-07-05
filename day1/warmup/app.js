@@ -10,10 +10,9 @@ app.engine('hbs', exphbs({extname: 'hbs', defaultLayout: 'main'}));
 app.set('view engine', 'hbs');
 app.use(express.static(path.join(__dirname, 'public')));
 
-var unused = false;
 
 app.get('/', function(req, res) {
-  ress.render('index', {
+  res.render('index', {
     data: require('./data.json')
   });
 });

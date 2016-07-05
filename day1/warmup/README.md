@@ -7,14 +7,13 @@ arrays into HTML tables using templates.
 
 ## Instructions
 
-1. Install an ESLint plugin for your text editor of choice.
-  - TODO Atom
-  - TODO Sublime
-1. Use ESLint to find the errors in `app.js` and fix them.
+Turn data stored in `data.json` into an HTML table using nested `{{#each}}`
+loops.
+
 1. There's a JSON file with 2-dimensional array data about some random movies
    in `data.json`. Check it out.
 1. Update `index.hbs` to render data contained in `data.json` into tabular
-   format. Note:<br>
+   format. Note:
    - Contents of `data.json` are available in `index.hbs` as the variable
      `data`.
    - Use Handlebars `{{#each}}` directives to iterate over rows. Then
