@@ -11,7 +11,8 @@ zero, and have three buttons:
 - "-": Decrement the count by one
 - "Increment if odd": Like it says
 
-See the demo of the live version.
+See the demo of the live version on screen; you can play with it
+[here](http://s.codepen.io/lockehart/debug/grxrVL).
 
 ## Instructions
 
