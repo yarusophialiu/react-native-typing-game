@@ -10,8 +10,9 @@ to tie the values of two text input fields together in React.
 ## Instructions
 
 1. [Open CodePen for this exercise.](http://codepen.io/moose-horizons/pen/akyorq?editors=0010)
-1. There are two text input fields here. When one changes the other should
-   change with it and display identical data at all times.
+1. There are two text input fields here. We are going to make it  
+   so that they display identical data at all times. So when
+   one text input field changes the other should change with it.
 1. Turn input fields into controlled input fields by setting
    `value={this.state.text}` on them.
 1. Create a new function `change` inside the class. This function should

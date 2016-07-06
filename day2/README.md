@@ -4,6 +4,7 @@
 
 1. [Fizz buzz React edition](warmup.md)
 1. [Controlled form fields](form.md)
+1. [Component Lifecycle: Timer](timer.md)
 
 ## Pair Programming Exercise
 
