@@ -8,4 +8,4 @@
 
 ## Pair Programming Exercise
 
-1. [React chat](https://github.com/horizons-school-of-technology/reactive-table/blob/master/README.md)
+1. [React chat](https://github.com/horizons-school-of-technology/react-chat)
