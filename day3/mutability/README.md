@@ -1,5 +1,7 @@
 # Inline Exercise: Mutability
 
+## Time limit: 10 minutes
+
 ## Instructions
 
 You'll make changes inside `index.js`. Open that file in your text editor,

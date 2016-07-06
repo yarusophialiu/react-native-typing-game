@@ -1,5 +1,7 @@
 # Warmup Exercise: React refresher
 
+## Time limit: 15 minutes
+
 ## Goal
 
 Build a simple counter app using React. It should display a counter, starting at
