@@ -2,8 +2,10 @@
 
 ## Inline Exercises
 
-Coming soon!
+1. [Fizz buzz React edition](warmup.md)
+1. [Controlled form fields](form.md)
+1. [Component Lifecycle: Timer](timer.md)
 
 ## Pair Programming Exercise
 
-1. [React chat](chat.md)
+1. [React chat](https://github.com/horizons-school-of-technology/reactive-table/blob/master/README.md)
