@@ -3,6 +3,7 @@
 ## Inline Exercises
 
 1. [Fizz buzz React edition](warmup.md)
+1. [Controlled form fields](form.md)
 
 ## Pair Programming Exercise
 
