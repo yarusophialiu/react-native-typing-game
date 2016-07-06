@@ -2,8 +2,8 @@
 
 ## Inline Exercises
 
-Coming soon!
+1. [Fizz buzz React edition](warmup.md)
 
 ## Pair Programming Exercise
 
-1. [React chat](chat.md)
+1. [React chat](https://github.com/horizons-school-of-technology/reactive-table/blob/master/README.md)
