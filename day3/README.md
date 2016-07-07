@@ -8,3 +8,4 @@
 
 ## Pair Programming Exercises
 
+1. [Redux Calendar](https://github.com/horizons-school-of-technology/redux-calendar/)
