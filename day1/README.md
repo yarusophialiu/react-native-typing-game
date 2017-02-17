@@ -1,5 +1,23 @@
 # Week 6 Day 1 Exercises
 
+## Seb + Prath Examples #superHappyFunTime
+
+1. create & render elements [basic]
+1. createElement w/classes, ids, & CSS
+1. closing XML
+1. rewrite 1 & 2 w/JSX
+1. static render w/createClass
+1. using curly braces to inject JS [styles?]
+  - test `{{}}` vs. `{}`
+  - test `{1}` vs. `"{1}"`
+1. `this.props`
+1. JSX multiple items - children & multiple instances of one class & this.props.children
+1. `Array.map`
+1. Nested Iteration
+1. built-in handlers w/`{javascript}`
+1. built-in handlers w/an component method
+1. `getInitialState` and `setState`
+
 ## Inline Exercises
 
 1. [Warmup](warmup/README.md)
