@@ -154,3 +154,23 @@ ReactDOM.render(
   document.getElementById('ex6')
 );
 ```
+
+### `closing XML`
+
+### `static render w/createClass`
+
+### `using curly braces to inject JS`
+
+### `this.props`
+
+### `JSX multiple items`
+
+### `Array.map`
+
+### `nested iteration`
+
+### `built-in handlers w/{javascript}`
+
+### `built-in handlers w/an component method`
+
+### `getInitialState and setState`
