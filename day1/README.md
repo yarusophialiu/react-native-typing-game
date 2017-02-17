@@ -2,8 +2,8 @@
 
 ## Seb + Prath Examples #superHappyFunTime
 
-1. create & render elements [basic]
-1. createElement w/classes, ids, & CSS
+1. create & render elements [basic] - http://codepen.io/prath/pen/zNbXej?editors=1010
+1. createElement w/classes, ids, & CSS - http://codepen.io/prath/pen/ygWzMo?editors=1010
 1. closing XML
 1. rewrite 1 & 2 w/JSX
 1. static render w/createClass
