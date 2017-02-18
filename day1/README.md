@@ -14,7 +14,7 @@
 1. JSX multiple items - children & multiple instances of one class & this.props.children
 1. `Array.map` - http://codepen.io/prath/pen/JEqMyy?editors=1010
 1. Nested Iteration
-1. built-in handlers w/`{javascript}`
+1. built-in handlers w/`{javascript}` - http://codepen.io/prath/pen/xgNpWL?editors=1011
 1. built-in handlers w/an component method
 1. `getInitialState` and `setState`
 
