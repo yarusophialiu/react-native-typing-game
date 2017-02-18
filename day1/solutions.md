@@ -11,7 +11,7 @@ Solutions for the inline-examples that the TAs will go over during *SuperHappyFu
 // create a 'h1' element that displays 'Hello World!'
 // render the above element at id 'ex1'
 ReactDOM.render(
-  React.createElement('h1', null, 'Hello World'), 
+  React.createElement('h1', null, 'Hello World'),
   document.getElementById('ex1')
 );
 
@@ -23,7 +23,7 @@ ReactDOM.render(
   React.createElement('ul', null,
                       React.createElement('li', null, 'Taylor'),
                       React.createElement('li', null, 'Bob')
-                     ), 
+                     ),
   document.getElementById('ex2')
 );
 
@@ -32,7 +32,7 @@ ReactDOM.render(
 // that links to 'https://www.joinhorizons.com'
 // render the above element at id 'ex3'
 ReactDOM.render(
-  React.createElement('a', {href: 'http://www.joinhorizons.com/'}, 'Horizons'), 
+  React.createElement('a', {href: 'http://www.joinhorizons.com/'}, 'Horizons'),
   document.getElementById('ex3')
 );
 ```
@@ -50,7 +50,7 @@ ReactDOM.render(
 // if the rendered element has the correct id it
 // will be red and HUUUUUUUUUUUUGE #Trump
 ReactDOM.render(
-  React.createElement('h1', {id: 'title'}, 'Horizons'), 
+  React.createElement('h1', {id: 'title'}, 'Horizons'),
   document.getElementById('ex1')
 );
 
@@ -64,7 +64,7 @@ ReactDOM.render(
   React.createElement('div', {id: 'artists'},
                       React.createElement('div', {className: 'taylor'}, 'Taylor'),
                       React.createElement('div', {className: 'bae'}, 'Beyoncé')
-                     ), 
+                     ),
   document.getElementById('ex2')
 );
 
@@ -73,7 +73,7 @@ ReactDOM.render(
 // using inline styles give it a 20px solid red border
 // and a blue background
 ReactDOM.render(
-  React.createElement('div', {style: {height: '200px', width: '200px', backgroundColor: 'blue', border: '20px solid red'}}), 
+  React.createElement('div', {style: {height: '200px', width: '200px', backgroundColor: 'blue', border: '20px solid red'}}),
   document.getElementById('ex3')
 );
 ```
@@ -87,7 +87,7 @@ ReactDOM.render(
 // create a 'h1' element that displays 'Hello World!'
 // render the above element at id 'ex1'
 ReactDOM.render(
-  <h1>Hello World</h1>, 
+  <h1>Hello World</h1>,
   document.getElementById('ex1')
 );
 
@@ -108,7 +108,7 @@ ReactDOM.render(
 // that links to 'https://www.joinhorizons.com'
 // render the above element at id 'ex3'
 ReactDOM.render(
-  <a href='http://www.joinhorizons.com/'>Horizons</a>, 
+  <a href='http://www.joinhorizons.com/'>Horizons</a>,
   document.getElementById('ex3')
 );
 
@@ -120,7 +120,7 @@ ReactDOM.render(
 // if the rendered element has the correct id it
 // will be red and HUUUUUUUUUUUUGE #Trump
 ReactDOM.render(
-  <h1 id='title'>Horizons</h1>, 
+  <h1 id='title'>Horizons</h1>,
   document.getElementById('ex4')
 );
 
@@ -134,7 +134,7 @@ ReactDOM.render(
   <div id='artists'>
     <div className='taylor'>Taylor</div>
     <div className='bae'>Beyoncé</div>
-  </div>, 
+  </div>,
   document.getElementById('ex5')
 );
 
@@ -156,6 +156,24 @@ ReactDOM.render(
 ```
 
 ### `closing XML`
+
+```javascript
+// Horizons Website
+// We have made a very basic version of the Horizons
+// website using JSX (XML) but we missed a couple of
+// tags. Fix all the errors to make the site display
+// appropriately.
+ReactDOM.render(
+  <div>
+     <img src="http://www.joinhorizons.com/assets/horizons_school-799858ac88f5843a6fc5f064675810189a99c19cbf38a9766fc1b370a8206020.png" />
+    <h1>Horizons Bootcamp</h1>
+    <p>Spend your summer immersing yourself in the world of tech. Join high-potential students from around the world. Build real skills, make amazing friends and fast-track your career</p>
+    <input type="Text" placeholder="Your email here" />
+    <input type="submit" />
+  </div>,
+  document.getElementById('ex1')
+);
+```
 
 ### `static render w/createClass`
 

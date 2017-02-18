@@ -5,7 +5,7 @@
 1. create & render elements [basic] - http://codepen.io/prath/pen/zNbXej?editors=1010
 1. createElement w/classes, ids, & CSS - http://codepen.io/prath/pen/ygWzMo?editors=1010
 1. rewrite 1 & 2 w/JSX - http://codepen.io/prath/pen/oBRGQK?editors=1010
-1. closing XML
+1. closing XML - http://codepen.io/sbastidasr/pen/mRYqpw?editors=0010
 1. static render w/createClass - http://codepen.io/prath/pen/rjgYJE?editors=1010
 1. using curly braces to inject JS [styles?]
   - test `{{}}` vs. `{}`
