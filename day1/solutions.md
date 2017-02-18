@@ -177,6 +177,27 @@ ReactDOM.render(
 
 ### `static render w/createClass`
 
+```js
+// ex1. Create two React classes:
+//   - RedHeading: a h1 heading that is red
+//   - BlueHeading: a h1 heading that is blue
+var RedHeading = React.createClass({
+  render: function() {
+    return <h1 style={ {color: 'red'} }>I am Red</h1>;
+  }
+});
+
+var BlueHeading = React.createClass({
+  render: function() {
+    return <h1 style={ {color: 'blue'} }>I am Blue</h1>;
+  }
+});
+
+// DO NOT MODIFY
+ReactDOM.render(<RedHeading/>, document.getElementById('red'));
+ReactDOM.render(<BlueHeading/>, document.getElementById('blue'));
+```
+
 ### `using curly braces to inject JS`
 
 ### `this.props`
