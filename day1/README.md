@@ -10,9 +10,9 @@
 1. using curly braces to inject JS [styles?]
   - test `{{}}` vs. `{}`
   - test `{1}` vs. `"{1}"`
-1. `this.props`
+1. `this.props` - http://codepen.io/prath/pen/mRYqYp?editors=1010
 1. JSX multiple items - children & multiple instances of one class & this.props.children
-1. `Array.map`
+1. `Array.map` - http://codepen.io/prath/pen/JEqMyy?editors=1010
 1. Nested Iteration
 1. built-in handlers w/`{javascript}`
 1. built-in handlers w/an component method

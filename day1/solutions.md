@@ -183,10 +183,48 @@ ReactDOM.render(<BlueHeading/>, document.getElementById('blue'));
 ### `using curly braces to inject JS`
 
 ### `this.props`
+```js
+// Create a ColorfulCustomHeading React class
+// that returns a 'h1' heading where the text
+// and color are passed in through props
+
+var ColorfulCustomHeading = React.createClass({
+  render: function() {
+    return <h1 style={ {color: this.props.color} }>{ this.props.text }</h1>;
+  }
+});
+
+// DO NOT MODIFY
+ReactDOM.render(<ColorfulCustomHeading color="red" text="Red Title"/>,
+                document.getElementById('red'));
+ReactDOM.render(<ColorfulCustomHeading color="blue" text="Blue Title"/>,
+                document.getElementById('blue'));
+```
 
 ### `JSX multiple items`
 
 ### `Array.map`
+```js
+// make a class called 'CustomList' that
+// takes in an array as props, and creates
+// an unordered list where each list element
+// is from that array
+var CustomList = React.createClass({
+  render: function() {
+    return <ul>
+      {this.props.data.map(function(item) {
+        return <li>{item}</li>;
+      })}
+    </ul>
+  }
+});
+
+// DO NOT MODIFY
+// if implemented properly the following list should show
+// up correctly
+ReactDOM.render(<CustomList data={['Snap dat Selfie', 'Clean Big Toe', 'Weave Dank Breadbasket']} />,
+               document.getElementById('myList'));
+```
 
 ### `nested iteration`
 
