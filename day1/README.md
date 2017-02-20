@@ -7,7 +7,7 @@
 1. rewrite 1 & 2 w/JSX - http://codepen.io/prath/pen/oBRGQK?editors=1010
 1. closing XML - http://codepen.io/sbastidasr/pen/mRYqpw?editors=0010
 1. static render w/createClass - http://codepen.io/prath/pen/rjgYJE?editors=1010
-1. using curly braces to inject JS [styles?]
+1. using curly braces to inject JS [styles?] - http://codepen.io/sbastidasr/pen/LxoOqb?editors=0010
   - test `{{}}` vs. `{}`
   - test `{1}` vs. `"{1}"`
 1. `this.props` - http://codepen.io/prath/pen/mRYqYp?editors=1010

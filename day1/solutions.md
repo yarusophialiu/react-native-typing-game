@@ -211,7 +211,6 @@ var a=3;
 var b=8;
 ReactDOM.render(
    <h2>The result of the sum is: {a+b}</h2>,
-  //<h2>The result of the sum is: a+b</h2>,
   document.getElementById('ex1')
 );
 
@@ -221,8 +220,7 @@ ReactDOM.render(
 // name instead. Fix it.
 var text="This is a nice title"
 ReactDOM.render(
-  //<h2>text</h2>,
-  <h2>{text}</h2>, // Solution
+  <h2>{text}</h2>,
   document.getElementById('ex2')
 );
 
@@ -232,8 +230,7 @@ ReactDOM.render(
 // Right now, it is throwing an error. Fix it.
 var styleObject = {color: "pink"};
 ReactDOM.render(
-  // <h2>This should be Pink</h2>,
-  <h2 style={styleObject}>This should be Pink</h2>, //solution
+  <h2 style={styleObject}>This should be Pink</h2>,
   document.getElementById('ex3')
 );
 
@@ -242,8 +239,7 @@ ReactDOM.render(
 // the text in green. Instead, it is throwing an error.
 // Fix it.
 ReactDOM.render(
-  <h2 style={{color: "green"}}>Green Text</h2>, //Solution
-  //<h2 style="{color: green}">This should be Green</h2>,  
+  <h2 style={{color: "green"}}>Green Text</h2>,
   document.getElementById('ex4')
 );
 ```
