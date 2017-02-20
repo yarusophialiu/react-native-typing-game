@@ -329,7 +329,6 @@ ReactDOM.render(<CustomList data={['Snap dat Selfie', 'Clean Big Toe', 'Weave Da
                document.getElementById('myList'));
 ```
 
-### `nested iteration`
 
 ### `built-in handlers w/{javascript}`
 ```js
@@ -361,6 +360,10 @@ var MyInputBox = React.createClass({
 ReactDOM.render(<MyInputBox />, document.getElementById('input'));
 ```
 
-### `built-in handlers w/an component method`
+### `Own component methods`
+
 
 ### `getInitialState and setState`
+
+
+### `Extra super fun exc. `
