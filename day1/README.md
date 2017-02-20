@@ -11,7 +11,7 @@
   - test `{{}}` vs. `{}`
   - test `{1}` vs. `"{1}"`
 1. `this.props` - http://codepen.io/prath/pen/mRYqYp?editors=1010
-1. JSX multiple items - children & multiple instances of one class & this.props.children
+1. JSX multiple items - children & this.props.children - http://codepen.io/sbastidasr/pen/BpXagJ?editors=1010
 1. `Array.map` - http://codepen.io/prath/pen/JEqMyy?editors=1010
 1. Nested Iteration
 1. built-in handlers w/`{javascript}` - http://codepen.io/prath/pen/xgNpWL?editors=1011
