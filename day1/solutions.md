@@ -421,5 +421,3 @@ var Counter = React.createClass({
 // DO NOT MODIFY
 ReactDOM.render(<Counter />, document.getElementById('blue'));
 ```
-
-### `Extra super fun exc. `
