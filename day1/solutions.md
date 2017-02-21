@@ -361,8 +361,6 @@ ReactDOM.render(<MyInputBox />, document.getElementById('input'));
 ```
 
 ### `Own component methods`
-
-
 ```js
 // ex1. Create a React class called MyButton
 // that renders a button that alerts 'clicked!'
@@ -388,8 +386,40 @@ var MyButton = React.createClass({
 ReactDOM.render(<MyButton count={0} />, document.getElementById('blue'));
 ```
 
-
 ### `getInitialState and setState`
 
+```js
+// getInitalState + setState
+
+// Modify Counter so that it has an initial state of count=0
+// use getInitialState to set this as soon as the controller
+// is created.
+
+// Declare component methods "increase" and "decrease" using
+// setState to increase/decrease the counter when the respective
+// buttons are clicked
+
+var Counter = React.createClass({
+  getInitialState: function() {
+    return {count: 0};
+  },
+  increase: function() {
+    this.setState({count: this.state.count + 1});
+  },
+  decrease: function() {
+    this.setState({count: this.state.count - 1});
+  },
+  render: function() {
+    return <div>
+      <button onClick={this.increase}>Increase Count</button>
+      <button onClick={this.decrease}>Deacrease Count</button>
+      <h1>Count: {this.state.count}</h1>
+    </div>
+  }
+});
+
+// DO NOT MODIFY
+ReactDOM.render(<Counter />, document.getElementById('blue'));
+```
 
 ### `Extra super fun exc. `
