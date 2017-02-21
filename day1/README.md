@@ -14,7 +14,7 @@
 1. JSX multiple items - children & this.props.children - http://codepen.io/sbastidasr/pen/BpXagJ?editors=1010
 1. `Array.map` - http://codepen.io/prath/pen/JEqMyy?editors=1010
 1. built-in handlers w/`{javascript}` - http://codepen.io/prath/pen/xgNpWL?editors=1011
-1. Own component methods - http://codepen.io/sbastidasr/pen/mRNJbG
+1. Own component methods - http://codepen.io/sbastidasr/pen/mRNJbG?editors=1011
 1. `getInitialState` and `setState` - http://codepen.io/sbastidasr/pen/pRMJvj?editors=1010
 
 ## Inline Exercises
