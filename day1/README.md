@@ -1,6 +1,6 @@
 # Week 6 Day 1 Exercises
 
-## Seb + Prath Examples #superHappyFunTime
+##superHappyFunTime
 
 1. create & render elements [basic] - http://codepen.io/prath/pen/zNbXej?editors=1010
 1. createElement w/classes, ids, & CSS - http://codepen.io/prath/pen/ygWzMo?editors=1010
