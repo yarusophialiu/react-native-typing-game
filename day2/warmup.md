@@ -5,8 +5,6 @@
 The goal of this exercise is to solve a very common programming interview
 question using React.
 
-## Time limit: 15 minutes
-
 ## Instructions
 
 FizzBuzz is a basic programming question asked in many interviews. It involves
