@@ -5,6 +5,7 @@
 1. [Fizz buzz React edition](warmup.md)
 1. [Controlled form fields](form.md)
 1. [Component Lifecycle: Timer](timer.md)
+1. [Adjustable Timer](http://codepen.io/moose-horizons/pen/VpZaOV?editors=0010)
 
 ## Pair Programming Exercise
 
