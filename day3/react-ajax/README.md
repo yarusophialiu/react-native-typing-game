@@ -113,20 +113,32 @@ main views inside your app, namely `Registration`, `Login` and `Posts`.
 
 ### `<Posts />`
 
-![](img/fb_feed.png)
-
 1. When this "page" first loads use `componentDidMount` to make an
   AJAX request to the backend and get posts. Save the posts you
   get from AJAX in `this.state`.
 1. In your `render` function map posts you are storing in `this.state`
-  to elements. Make sure to display the post contents and the name of the
-  author.
-1. Add a post creation form with a controlled text input field and a
-  `Post` button. Make an AJAX request to create post endpoint,
-  if the request succeeds and add the new post to the array of
-  posts in your `this.state`.
+  to elements. Make sure to display the post contents, the date and time when
+  the post was made, and the name of the author.
+1. Add a post creation form with a controlled text input field and a `Post`
+  button. When the `Post` button is clicked make an AJAX request to create post
+  endpoint, if the request succeeds and add the new post to the array of posts in
+  your `this.state`.
 
   ![](img/fb_post.png)
+
+1. Add a `Like` button to each post. When the `Like` button is clicked make
+  an AJAX request to the `likes` endpoint in the backend. If the request
+  succeeds update `this.state` and increase the number of likes for the
+  current post by 1.
+1. Add a `Reply` button to each post. When this button is clicked prompt the
+user for the contents of the new comment then make an AJAX request to the
+`comments` endpoint, which if it succeeds should update `this.state` with
+the current comment.
+
+End result:
+
+![](img/fb_feed.png)
+
 
 ## Instructions
 
