@@ -1,10 +1,5 @@
 # Facebook - React Edition
 
-**Instructions:**
-
-1. Build Facebook
-1. Use React
-
 ## Introduction
 
 In Week 2 we built a Facebook feed using AJAX and jQuery.
@@ -16,10 +11,11 @@ We're going to rebuild that exercise using React.
 ### Getting started
 
 The backend for the Facebook application is provided for you at: https://horizons-facebook.herokuapp.com/
-A full API reference can be found below.
+A full API reference can be found below. (This is identical to the API we used
+in week 2.)
 
-You will be writing the frontend for this application. Run `npm start` and open
-`index.html` in your browser. Your React code will go in `client.js`.
+You task is to implement the frontend of your application. Run `npm start` and
+open `index.html` in your browser. Your React code will go in `client.js`.
 
 If you want to add styling to your application you can add a `<style>` block to
 `index.html` or create a `styles.css` file and link to it in your `index.html`.
@@ -39,7 +35,7 @@ register with email, password, first and last name.
 
 2. **Login**: You will need to present existing users with a login that
 authenticates with email and password. Upon successful login, our server will
-return you a token to pass into subsequent requests.
+return a token for you to use in subsequent requests.
 
 3. **Posts**: For authenticated users, you will need to present a Newsfeed with
 Post objects returned by our server and a component to allow users to submit
@@ -59,7 +55,7 @@ poster's name and time submitted.
   objects - comments will also be stored as an array on each Post object and
   contain the comment contents and information on the commenter.
 
-### `<App />`
+### Exercise 1. `<App />`
 
 Your `App` component is responsible for displaying and switching between
 main views inside your app, namely `Registration`, `Login` and `Posts`.
@@ -68,24 +64,24 @@ main views inside your app, namely `Registration`, `Login` and `Posts`.
   and check it in your `render` function to alternate between the main
   components:
 
-  ![](img/app.png)
+  [Hint](img/app.png)
 
 1. Now you have to give your child components a way to change the currently
   active page. Create a `navigate` method in `App` that takes a new page
   and updates `this.state.page`:
 
-  ![](img/navigate.png)
+  [Hint](img/navigate.png)
 
 1. Pass `navigate` into your children using props:
 
-  ![](img/pass-navigate.png)
+  [Hint](img/pass-navigate.png)
 
 1. Inside the child element call `navigate` through `this.props` to change
   the currently active page:
 
-  ![](img/login-navigate.png)
+  [Hint](img/login-navigate.png)
 
-### `<Login />`
+### Exercise 2. `<Login />`
 
 ![](img/fb_login.png)
 
@@ -94,16 +90,23 @@ main views inside your app, namely `Registration`, `Login` and `Posts`.
   for email and password. Remember to set `value` to `this.state.SOMETHING HERE`
   and set an `onChange` handler that updates state.
 1. When a user clicks the `Login` button make an AJAX request to the login
-  endpoint in the backend. If the request succeeds save the token someplace
-  so you can make authenticated requests later. Then navigate to the `posts`
-  "page" so the user can see their feed.
+  endpoint in the backend. If the request succeeds save the token from the
+  response so you can make authenticated requests later. Then navigate to the
+  `posts` "page" so the user can see their feed.
 
-  ![](img/login-ajax.png)
+  [Hint](img/login-ajax.png)
+
+  One option for storing the the login token is in the `App` component state.
+  You will need to pass another function from `App` to `Login` like you did
+  with `navigate`. This new function should call `setState` to save the
+  token. Once you have the token saved you can pass it into "pages"
+  that require login (like `Posts`) via props so they can make authenticated
+  requests.
 
 
-### `<Registration />`
+### Exercise 3. `<Registration />`
 
-![](img/fb_register.png)
+[](img/fb_register.png)
 
 1. Create [controlled form fields](https://facebook.github.io/react/docs/forms.html)
   for email, password, first and last name.
@@ -111,7 +114,7 @@ main views inside your app, namely `Registration`, `Login` and `Posts`.
   endpoint in the backend. If the request succeeds navigate to the `login`
   "page".
 
-### `<Posts />`
+### Exercise 4. `<Posts />`
 
 1. When this "page" first loads use `componentDidMount` to make an
   AJAX request to the backend and get posts. Save the posts you
@@ -131,153 +134,22 @@ main views inside your app, namely `Registration`, `Login` and `Posts`.
   succeeds update `this.state` and increase the number of likes for the
   current post by 1.
 1. Add a `Reply` button to each post. When this button is clicked prompt the
-user for the contents of the new comment then make an AJAX request to the
-`comments` endpoint, which if it succeeds should update `this.state` with
-the current comment.
+  user for the contents of the new comment then make an AJAX request to the
+  `comments` endpoint, which if it succeeds should update `this.state` with
+  the current comment.
+1. Add `Logout` button at the bottom of the page that makes an AJAX request
+  to the `logout` endpoint. If the request succeeds, clear the stored token
+  and navigate to the `login` "page."
 
 End result:
 
 ![](img/fb_feed.png)
 
+### Bonus Exercises:
 
-## Instructions
+1. **Bonus: Relative Date**: Using `https://momentjs.com/` figure out a way to add relative time to all of your posts. So instead of an absolute date a post would have a date relative to the current date (i.e. posted 5 minutes ago).
 
-These instructions are very minimal in nature and should only be used as a guide to creating your Facebook newsfeed **(they should not be followed religiously as the final app should be your own creation)**. Additionally, the *pictures* throughout this guide are merely visual aids to help you understand and visualize each step, so **do not** imitate the designs used for the images.
-
-1. Let's create the files required to start making your Facebook Newsfeed:
-
-  * `/facebook/index.html`: This will be the main page of your app where you will write all of the necessary `HTML`.
-  * `/facebook/css/style.css`: This will be our primary style sheet for the app. You can add more stylesheets if you would like.
-  * `/facebook/js/script.js`: We will write all of our `Javascript & jQuery` in here.
-
-1. Add starter `HTML` code for your `index.html` file
-
-```HTML
-
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  <title>Horizons Facebook</title>
-  <!-- CSS files for Bootstrap -->
-  <!-- UNCOMMENT IF NEEDED -->
-  <!-- <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"> -->
-
-
-  <!-- Your css file -->
-  <link rel="stylesheet" href="./css/style.css">
-</head>
-<body>
-  <!-- YOUR CODE HERE -->
-  Hello, World!
-
-  <!-- jQuery -->
-  <script
-  src="https://code.jquery.com/jquery-3.1.1.min.js"
-  integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
-  crossorigin="anonymous"></script>
-
-  <!-- Your script file -->
-  <script type="text/javascript" src="./js/script.js"></script>
-  <!-- UnderscoreJS Library -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
-
-  <!-- JavaScript files for Bootstrap -->
-  <!-- UNCOMMENT IF NEEDED -->
-  <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script> -->
-</body>
-</html>
-```
-
-**Note** that the Bootstrap libraries are commented out in the `index.html` file. If you would like to use Bootstrap you should uncomment the lines after **UNCOMMENT IF NEEDED**
-
-### Login
-
-1. Write the front-end code the login section of your Facebook site. One way to create the login form is to create `<input>` elements and a `<button>` element with a click handler. When the button is pressed you should use the values in the input elements to populate your `AJAX` request.
-
-  ![login](./facebook/images/fb_login.png)
-
-1. Using `AJAX` take the two input elements and `POST` them to the `/users/login` endpoint.
-`url: https://horizons-facebook.herokuapp.com/api/1.0/users/login`. Refer to the **API Reference** to see what the request/response should look like.
-
-  ```javascript
-
-  $.ajax('url-goes-here', {
-    method: 'POST',
-    success: function(data) {
-      // data will be the response data that is
-      // returned by the endpoint. use this to
-      // access the token for future authorization.
-
-      // data.response.token will give you access
-      // to the AUTH_TOKEN
-    },
-    data: {
-      email: String,
-      password: String
-    }
-  });
-  ```
-
-1. If all goes well you will get back a `JSON` response that looks something like: `{success: true, response: {id: USER_ID, token: AUTH_TOKEN}}`. You should store the `AUTH_TOKEN` in [localstorage](https://developer.mozilla.org/en-US/docs/Web/API/Storage/LocalStorage) using `localstorage.setItem('token', data.response.token)`. The token can be accessed at a later time using `localstorage.getItem('token')`.
-
-1. You can now hide this (login/registration) section of the `HTML` and reveal the newsfeed.
-
-### Register
-
-1. Add `HTML` to your `index.html` file to build a registration form for new users. A new user **must** have a first name (*fname*), last name (*lname*), email address (*email*), and a password (*password*).
-
-  ![register](./facebook/images/fb_register.png)
-
-1. Much like login you should create a form like the one above with the four *required* properties in `<input>` fields, and when the `Register` button is pressed the `AJAX POST request` to `https://horizons-facebook.herokuapp.com/api/1.0/users/register` should occur (with fname, lname, email, and password).
-
-1. On success the `AJAX` response should contain `{success: true}` (and that's it).
-
-1. Now the Login section should reveal itself while the Register section should hide the form.
-
-### List Posts
-
-1. Once you have tackled the login/register pages, the next step is to retrieve and list posts currently on the database.
-
-  ![posts](./facebook/images/fb_feed.png)
-
-1. Using `HTML` and `CSS` create what you want your newsfeed posts/comments/likes to look like. You should do this before you use `AJAX` requests to populate these elements.
-
-1. Refer to the **API Reference** to figure out what a `GET /posts` request/response should look like. You only need to include your `token` in the request header.
-
-1. The response to your `AJAX` request will be in `JSON`, and your job is to parse the object and convert all of the posts into `HTML`. Recall the `jQuery` syntax used to `.append()` cards to your list; similarly, parse the response object into useful post information (i.e. post creation date, poster, post content...).
-
-1. Be sure to add a like and comment/reply button as we will be implementing that functionality later on.
-
-### Post Posts
-
-  ![post something](./facebook/images/fb_post.png)
-
-1. In order to publish posts onto the database you should first create an input box with a submit/post button.
-
-1. When the click event is triggered you should call the `POST /posts` endpoint to post your literary masterpiece from the input box. Use the **API Reference** to figure out what your request/response should look like.
-
-### Likes/Comments
-
-1. At this stage in the guide you have most likely mastered `AJAX Requests/Front-End Programming`. So refer to the **API Reference** guide to figure out how to like/comment on existing posts.
-
-1. Make sure you have a `Like` button and a `Comment` button.
-
-1. Remember that `POSTing` to the `/posts/comments/:id` endpoint requires a message, so you need to also add UI functionality to get user input for a comment.
-
-1. Another thing to note is that the `/posts/likes/:id` endpoint just toggles the current state of the like button.
-
-### Update Page
-
-1. We have also learned about `Asynchronous` behaviour, and have been introduced to functions such as `setInterval` and `setTimeout`.
-
-1. Since the `/posts API` endpoint has all of the required information for the newsfeed (i.e. posts & comments & likes) we should periodically update our newsfeed by sending out `AJAX requests` to this endpoint.
-
-1. In order to minimize traffic at that endpoint requests should be submitted at least 30 seconds apart.
-
-### Logout
-
-1. When ending the session be sure to *logout*. The `/users/logout` takes in your AUTH_TOKEN as parameters and (if successful) responds with `{"success": true}`.
+1. **Double Bonus: Chat**: See *Using Sockets* for more information on how to implement Chat. You will be adding a chat section to your Facebook site to have a central chat feature for all users on your site.
 
 # API Reference
 
@@ -622,9 +494,3 @@ Notice the difference in the new response from the `API` once the `/posts/likes/
 `url: https://horizons-facebook.herokuapp.com/api/1.0/users/logout`
 
 This endpoint allows you to safely logout and destroy the token you received on login. The `AJAX` request url should have the `AUTH_TOKEN` in it (i.e. `https://horizons-facebook.herokuapp.com/api/1.0/users/logout?token=insert-token-here`. If the request is successful, you should get a `{success: true}` response.
-
-### Bonuses
-
-1. **Bonus: Relative Date**: Using `https://momentjs.com/` figure out a way to add relative time to all of your posts. So instead of an absolute date a post would have a date relative to the current date (i.e. posted 5 minutes ago).
-
-1. **Double Bonus: Chat**: See *Using Sockets* for more information on how to implement Chat. You will be adding a chat section to your Facebook site to have a central chat feature for all users on your site.
