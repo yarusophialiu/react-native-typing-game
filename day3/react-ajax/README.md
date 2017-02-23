@@ -85,6 +85,8 @@ main views inside your app, namely `Registration`, `Login` and `Posts`.
 
 ### Exercise 2. `<Login />`
 
+Your login component will allow users to log in with their email and password.
+
 ![](img/fb_login.png)
 
 1. When a user clicks the `Register` button navigate to the Registration page
@@ -109,6 +111,9 @@ main views inside your app, namely `Registration`, `Login` and `Posts`.
 
 ### Exercise 3. `<Registration />`
 
+Your registration component will allow users to register with their email, password,
+first and last name.
+
 [](img/fb_register.png)
 
 1. Create [controlled form fields](https://facebook.github.io/react/docs/forms.html)
@@ -118,6 +123,9 @@ main views inside your app, namely `Registration`, `Login` and `Posts`.
   "page".
 
 ### Exercise 4. `<Posts />`
+
+Your posts component will allow users to view all posts, make new posts,
+and comment and like existing posts.
 
 1. When this "page" first loads use `componentDidMount` to make an
   AJAX request to the backend and get posts. Save the posts you
