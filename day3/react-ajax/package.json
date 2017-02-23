@@ -10,10 +10,10 @@
     "watchify": "^3.7.0"
   },
   "scripts": {
-    "start": "browserify client.js -o bundle.js -t [ babelify --presets [ es2015 react ] ]",
-    "watch": "watchify client.js -o bundle.js -t [ babelify --presets [ es2015 react ] ]"
+    "start": "watchify client.js -o bundle.js -t [ babelify --presets [ es2015 react ] ]"
   },
   "dependencies": {
+    "jquery": "^3.1.1",
     "react": "^15.2.0",
     "react-dom": "^15.2.0"
   }
