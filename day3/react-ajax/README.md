@@ -6,26 +6,26 @@ In Week 2 we built a Facebook feed using AJAX and jQuery.
 [Check out the instructions for that exercise and read your solution reacquaint yourself
 with the task at hand.](https://github.com/horizons-school-of-technology/week02/blob/master/day5/README.md)
 
-We're going to rebuild that exercise using React.
+You're going to rebuild that exercise using React. This will teach
+you how to use AJAX inside React and how to pass state/props back and forth
+between parents and children.
 
 ### Getting started
 
 The backend for the Facebook application is provided for you at: https://horizons-facebook.herokuapp.com/
-A full API reference can be found below. (This is identical to the API we used
-in week 2.)
+[A full API reference can be found below](#api-reference). (This is identical to the API we used
+in Week 2.) Your task is to implement the frontend of your application.
 
-You task is to implement the frontend of your application. Run `npm start` and
-open `index.html` in your browser. Your React code will go in `client.js`.
+To start your app run `npm start` and open `index.html` in your browser. Your
+React code will go in `client.js`.
 
-If you want to add styling to your application you can add a `<style>` block to
-`index.html` or create a `styles.css` file and link to it in your `index.html`.
+If you want to add styling to your application you can either add a `<style>`
+block to `index.html` or create a `styles.css` file and link to it in your
+`index.html`.
 
-### React Components
+## Overview
 
-The React components we want you to build are below. We recommend you approach each
-one as a step building off the other, but you may take the components in any
-order you'd like. Keep in mind that many of these components rely on your
-implementation of registering and authenticating a user.
+Here are the React components you will need to build.
 
 1. **App**: As usual you will need a top level React component.
   It's going handle switching between all other components below.
@@ -55,6 +55,8 @@ poster's name and time submitted.
   objects - comments will also be stored as an array on each Post object and
   contain the comment contents and information on the commenter.
 
+## Exercises
+
 ### Exercise 1. `<App />`
 
 Your `App` component is responsible for displaying and switching between
@@ -62,22 +64,22 @@ main views inside your app, namely `Registration`, `Login` and `Posts`.
 
 1. Store the currently active "page" of your app in `this.state.page` and
   and check it in your `render` function to alternate between the main
-  components:
+  components.
 
   [Hint](img/app.png)
 
 1. Now you have to give your child components a way to change the currently
   active page. Create a `navigate` method in `App` that takes a new page
-  and updates `this.state.page`:
+  and updates `this.state.page`.
 
   [Hint](img/navigate.png)
 
-1. Pass `navigate` into your children using props:
+1. Pass `navigate` into your children using props.
 
   [Hint](img/pass-navigate.png)
 
 1. Inside the child element call `navigate` through `this.props` to change
-  the currently active page:
+  the currently active page.
 
   [Hint](img/login-navigate.png)
 
@@ -85,7 +87,8 @@ main views inside your app, namely `Registration`, `Login` and `Posts`.
 
 ![](img/fb_login.png)
 
-1. When a user clicks the `Register` button navigate to the Registration page using `this.props.navigate`
+1. When a user clicks the `Register` button navigate to the Registration page
+  using `this.props.navigate`
 1. Create [controlled form fields](https://facebook.github.io/react/docs/forms.html)
   for email and password. Remember to set `value` to `this.state.SOMETHING HERE`
   and set an `onChange` handler that updates state.
