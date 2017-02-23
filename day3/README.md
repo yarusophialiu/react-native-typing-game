@@ -2,10 +2,10 @@
 
 ## Inline Exercises
 
-1. [Warmup](warmup.md)
-1. [Mutability](mutability/)
-1. [Redux intro](redux-intro.md)
+1. [Warmup: React Poetry AJAX](http://codepen.io/moose-horizons/pen/bqGGgV)
+1. [React JSON API and multiple requests](http://codepen.io/moose-horizons/pen/GrewrQ)
+1. [React weather](http://codepen.io/moose-horizons/pen/ggEELv)
 
 ## Pair Programming Exercises
 
-1. [Redux Calendar](https://github.com/horizons-school-of-technology/redux-calendar/)
+1. [Facebook React Edition](facebook-react/)
