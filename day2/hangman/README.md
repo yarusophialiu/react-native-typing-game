@@ -47,6 +47,13 @@ So the moral of this story is, you know enough to make it through times where yo
 We've found the "real" app buried in the complicated codebase and the world feels a little safer, so it's time to start the assignment.
 
 
+## Part 0.5
+
+This assignment is configured to use `linting`, which is the term for style enforcement. If the code you write does not meet this project's predefined style, the linter will complain and your build will fail. For this to go from being a nightmare to being a great ally, you will probably want to install a linter plugin for your editor. In Atom, go to Packages -> Settings View -> Open -> Install and search for `linter-eslint`. Install the result of the same name (and its dependencies). You may need to restart Atom before it takes effect.
+
+This package will display lint issues in your editor in real time as red underlines.
+
+
 ## Part 1: Routing
 
 As we saw in Part 0 while tracing through the code, a lot of the React Router stuff is set up for us already.

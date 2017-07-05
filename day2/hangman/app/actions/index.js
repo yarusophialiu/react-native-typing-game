@@ -1,16 +1,3 @@
-import * as types from './types';
+// Action Creators
 
-// Board actions
-export function start(answer) {
-    return {
-        type: types.START,
-        answer
-    };
-}
-
-export function guess(inputText) {
-    return {
-        type: types.GUESS,
-        inputText
-    };
-}
+// import * as types from './types';
