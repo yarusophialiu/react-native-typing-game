@@ -8,5 +8,6 @@
 
 ## Pair programming exercises
 
-[Redux Hangman](hangman)
+[Redux Hangman](hangman)  
+
 [Bonus: React Router Directory](directory)
