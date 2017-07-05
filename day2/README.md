@@ -1,4 +1,4 @@
-# Week 5 Day 4 Exercises
+# Week 6 Day 2 Exercises
 
 ## Morning videos & Individual exercises
 
