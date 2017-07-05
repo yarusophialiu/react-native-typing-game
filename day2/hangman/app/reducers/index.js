@@ -1,15 +1,15 @@
-import { routerReducer as routing } from 'react-router-redux';
+import { routerReducer } from 'react-router-redux';
 import { combineReducers } from 'redux';
-// import stepReducer from './stepReducer';
-// import wordReducer from './wordReducer';
+// import badGuessesReducer from './badGuessesReducer';
+// import wordLettersReducer from './wordLettersReducer';
 
 
 const rootReducer = combineReducers({
   /*
-    step: stepReducer,
-    word: wordReducer,
+    badGuesses: badGuessesReducer,
+    wordLetters: wordLettersReducer,
   */
-    routing: routing
+    routing: routerReducer // this reducer is used by React Router in Redux
 });
 
 export default rootReducer;

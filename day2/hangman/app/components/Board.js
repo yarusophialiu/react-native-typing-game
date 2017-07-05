@@ -2,16 +2,17 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Box from './Box';
 
-const Board = ({ currentState }) => {
+const Board = ({ wordLetters }) => {
     return (
       <div style={{'display': 'flex'}}>
-        {currentState.map(letter => <Box letter={letter}/>)}
+        {/* PSA: Box in this map should normally be given a key */}
+        {wordLetters.map(letter => <Box letter={letter}/>)}
       </div>
   );
 };
 
 Board.propTypes = {
-    currentState: PropTypes.array
+    wordLetters: PropTypes.array
 };
 
 export default Board;

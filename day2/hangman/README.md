@@ -47,7 +47,7 @@ So the moral of this story is, you know enough to make it through times where yo
 We've found the "real" app buried in the complicated codebase and the world feels a little safer, so it's time to start the assignment.
 
 
-## Part 0.5
+## Part 0.5: Install a Linter Plugin
 
 This assignment is configured to use `linting`, which is the term for style enforcement. If the code you write does not meet this project's predefined style, the linter will complain and your build will fail. For this to go from being a nightmare to being a great ally, you will probably want to install a linter plugin for your editor. In Atom, go to Packages -> Settings View -> Open -> Install and search for `linter-eslint`. Install the result of the same name (and its dependencies). You may need to restart Atom before it takes effect.
 
@@ -62,10 +62,47 @@ As we saw in Part 0 while tracing through the code, a lot of the React Router st
 
 1. Use a `Route` tag to make it so that the `GameContainer` currently in `App` only appears when you are on `/` AND NOT `/about`.
 
-    Note: `GameContainer` currently takes props in its tag, but when we use `component={GameContainer}` we aren't given the opportunity to specify the props :( . In this case we are actually _required_ to supply these props as a result of the `propTypes` line in `GameContainer.js`, which is a common pattern. There are 2 easy workarounds for this. We could write a wrapper component that needs no props but renders `GameContainer` with props and do `component={GameContainerWrapper}`, or we could use `render={() => <GameContainer WHATEVER PROPS WE WANT />}` (which is secretly the same thing but shorter).
-
 1. Use another `Route` tag to render the `About` component when on `/about`.
 
 You should now be able to switch between the game view and the about view using the links that are always at the bottom of the page. React Router is often very simple to implement for common use cases (ever since version 4 came out at least).
 
-## Part 2:
+## Part 2: Dispatching a GUESS event
+
+We are going to begin adding in functionality using Redux now.
+
+If you hadn't realized, everything currently in the app is static. To prove it, take a look at `GameContainer`. It is a `container component`, meaning that it is connected to the Redux store (via `connect`) and will receive props from the store's state and dispatch (via the `map__ToProps` functions). A container component is responsible for passing pieces of state down to any `presentational components` below it in the hierarchy if they need it, which `GameContainer`'s render method seems to already be doing. With `mapStateToProps` and `mapDispatchToProps` combined you can see that GameContainer expects to get 3 props: `badGuesses`, which will just be an integer starting at 0. We will represent The letters in the answer and whether or not they have been guessed as an array of objects, each of which has keys `letter` (a one character string) and `guessed` (a boolean). To put this all together into one state, we would need our state to be an object with keys `badGuesses,` and  `currentState`, and  `onInput`. In fact, the line of code about `propTypes` _enforces_ that these 3 props are the exact and only props and that they have certain types.
+
+The app being static at the moment comes from the fact that the current `mapStateToProps` and `mapDispatchToProps` functions in `GameContainer` are total duds. They ignore the store and pass in hardcoded props. To get our functionality, we will need these to pull meaningfully from state, but first there will have to be some meaningful state. We're going to have to start at the beginning of the Redux data flow storybook, which goes:
+
+    1. Some interaction/event in the app causes an action to be dispatched.
+    1. That action shows up at the reducer, which then spits out a new state.
+    1. Connected components (containers) learn of the state change and rerender.
+
+So it makes sense to start with dispatching. Normally, dispatching an action does nothing unless some reducer changes state and some component reads from that state. Having to do all these things before you can see what you're doing is not ideal for development, so often you'll set up some kind of tool to debug your Redux while you're writing it. In this case, the doohickey on the right of the running app is one such tool already in place for you. If you successfully dispatch an action, you should see it appear in that tool, along with the new state afterwards (which will be uninteresting in this step).
+
+1. In `mapDispatchToProps`, uncomment the argument so that we will be able to use it.
+
+1. We want the `onInput` function that `GameContainer` gets as a prop to dispatch an action rather than just alert. Let's give that action the `type` `'GUESS'`.
+
+1. The action should also include what letter is being guessed, since the reducer will probably need to know that in the next step. Add into the action a key `letter` that has this info.
+
+Now go to your app again (it should hot reload if it built successfully) and enter a letter. It should no longer alert, but instead have some effect on the right sidebar. Does what appears there seem like we were successful?
+
+**IF THERE'S TIME ADD INTO HERE STEPS ABOUT MAKING ACTION CREATORS AND EXPORTING ACTION TYPES**
+
+## Part 3: Writing reducers
+
+The reducer files are where what we call the state shape is defined. This just saying that whether our state is just a number, or an array of strings, or an object with 3 keys that are types XYZ, the reducer is where we would be able to tell. This makes sense since the reducer is responsible for specifying an initial state and returning new ones after actions come in.
+
+Think for a moment about what pieces of state you think you can identify in the Hangman app we will be writing, then think about how that might be minimally represented. *Hint* You can get a big hint if needed from `GameContainer`'s `mapStateToProps` function.
+
+
+In these instructions, we will represent how many bad guesses have been made with a piece of state called `badGuesses`, which will just be an integer starting at 0. We will represent The letters in the answer and whether or not they have been guessed as a piece of state called `wordLetters` that will be an array of objects, each of which has keys `letter` (a one character string) and `guessed` (a boolean). To put this all together into one state, we would need our state to be an object with keys `badGuesses` and `wordLetters`, which are the aforementioned substates.
+
+That's totally doable. But which is easier: writing a reducer for the full above state, or writing one reducer for `badGuesses` (which is just a number) and another for `wordLetters`? Followup thought: If our state were big and complicated, with many substates and substates on those substates, writing it all as one reducer wouldn't scale; When we go to increment some simple number, we would then have to do all kinds of `Object.assign`s and `slice`s and such just to get at it in it's location in the state without changing any of the other unrelated stuff. Annoying. So instead we will choose to write these 2 pieces of state `badGuesses` and `wordLetters` as separate reducers, and then we will use a nifty tool called `combineReducers` to return the same full state reducer we would have had just more slightly more trouble writing ourselves in this particular situation, but potentially a lot of trouble in some other situation. This approach is already set up for you in the reducers folder, with `index` combining what is exported from the other 2.
+
+1. Go to the `badGuessesReducer` file and start writing a reducer by making a function that takes arguments `state` and `action`. What should the initial state be? Remember how to specify it?
+
+1. In the body of the reducer function, `switch` on `action.type`
+
+**BAD GUESSES TOTALLY ISNT GONNA WORK, I NEED TO KNOW THE WORD**

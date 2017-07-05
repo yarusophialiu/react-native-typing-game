@@ -5,20 +5,20 @@ const inlineStyle = (letter) => ({
     'width': '50px',
     'height': '50px',
     'display': 'flex',
-    'align-items': 'center',
-    'justify-content': 'center',
-    'backgroundColor': letter === null ? 'red' : 'yellow'
+    'alignItems': 'center',
+    'justifyContent': 'center',
+    'backgroundColor': letter.guessed ? 'red' : 'yellow'
 });
 const Box = ({ letter }) => {
     return (
         <div style={inlineStyle(letter)}>
-            {letter === null ? '' : letter.toUpperCase()}
+            {letter.guessed ? letter.letter.toUpperCase() : '' }
         </div>
     );
 };
 
 Box.propTypes = {
-    letter: PropTypes.string
+    letter: PropTypes.object
 };
 
 export default Box;

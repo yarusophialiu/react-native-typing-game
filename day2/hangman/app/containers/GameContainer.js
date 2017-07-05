@@ -1,14 +1,15 @@
 import PropTypes from 'prop-types';
 import React from 'react';
+import { connect } from 'react-redux';
 import Man from '../components/Man';
 import Board from '../components/Board';
 
-const GameContainer = ({ stepNumber, currentState, onInput }) => {
+const GameContainer = ({ badGuesses, wordLetters, onInput }) => {
     let input;
     return (
         <div>
-            <Man stepNumber={stepNumber} />
-            <Board currentState={currentState} />
+            <Man badGuesses={badGuesses} />
+            <Board wordLetters={wordLetters} />
             <input type="text"
                 value={''}
                 ref={node => {input = node;}}
@@ -19,9 +20,34 @@ const GameContainer = ({ stepNumber, currentState, onInput }) => {
 };
 
 GameContainer.propTypes = {
-    stepNumber: PropTypes.number,
-    currentState: PropTypes.array,
+    badGuesses: PropTypes.number,
+    wordLetters: PropTypes.array,
     onInput: PropTypes.func
 };
 
-export default GameContainer;
+const mapStateToProps = (/* state */) => {
+    return {
+        badGuesses: 0,
+        wordLetters: [
+            {letter: 'H', guessed: true},
+            {letter: 'O', guessed: false},
+            {letter: 'R', guessed: false},
+            {letter: 'I', guessed: false},
+            {letter: 'Z', guessed: true},
+            {letter: 'O', guessed: false},
+            {letter: 'N', guessed: true},
+            {letter: 'S', guessed: false}
+        ]
+    };
+};
+
+const mapDispatchToProps = (/* dispatch */) => {
+    return {
+        onInput: (inputLetter) => alert(inputLetter)
+    };
+};
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(GameContainer);
