@@ -1,7 +1,5 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import { connect } from 'react-redux';
-import { guess } from '../actions';
 import Man from '../components/Man';
 import Board from '../components/Board';
 
@@ -26,20 +24,4 @@ GameContainer.propTypes = {
     onInput: PropTypes.func
 };
 
-const mapStateToProps = (state) => {
-    return {
-        stepNumber: state.textReducer.step,
-        currentState: state.textReducer.currentText
-    };
-};
-
-const mapDispatchToProps = (dispatch) => {
-    return {
-        onInput: (inputText) => dispatch(guess(inputText))
-    };
-};
-
-export default connect(
-    mapStateToProps,
-    mapDispatchToProps
-)(GameContainer);
+export default GameContainer;
