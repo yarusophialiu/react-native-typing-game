@@ -68,4 +68,4 @@
 ![](https://d3vv6lp55qjaqc.cloudfront.net/items/0k3A0A0Z1q0U09011G1M/Screen%20Recording%202017-05-28%20at%2005.59%20PM.gif?v=713df0df)
 
 # Exercise 2
- [CLICK HERE FOR SECOND EXERCISE REPO](https://github.com/horizons-school-of-technology/todo-redux/blob/master/README.md)
+ [CLICK HERE FOR SECOND EXERCISE REPO](https://github.com/horizons-school-of-technology/todo-redux/)
