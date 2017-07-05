@@ -54,6 +54,18 @@ This assignment is configured to use `linting`, which is the term for style enfo
 This package will display lint issues in your editor in real time as red underlines.
 
 
-## Part 1: Routing
+## Part 1: Simple Routing
 
-As we saw in Part 0 while tracing through the code, a lot of the React Router stuff is set up for us already.
+As we saw in Part 0 while tracing through the code, a lot of the React Router stuff is set up for us already. We don't have very much router stuff we want to add at the moment either. Our objective at the moment is to put a footer at the bottom of the page at all times with 2 links. One will take you to the Game (the `GameContainer` component), and the other will take you to an About screen (the currently unused `About` component).
+
+1. Add 2 `Link` tags to the bottom of `App`. The one for the Game should take you to `/`, and the one for the About should take you to `/about`.
+
+1. Use a `Route` tag to make it so that the `GameContainer` currently in `App` only appears when you are on `/` AND NOT `/about`.
+
+    Note: `GameContainer` currently takes props in its tag, but when we use `component={GameContainer}` we aren't given the opportunity to specify the props :( . In this case we are actually _required_ to supply these props as a result of the `propTypes` line in `GameContainer.js`, which is a common pattern. There are 2 easy workarounds for this. We could write a wrapper component that needs no props but renders `GameContainer` with props and do `component={GameContainerWrapper}`, or we could use `render={() => <GameContainer WHATEVER PROPS WE WANT />}` (which is secretly the same thing but shorter).
+
+1. Use another `Route` tag to render the `About` component when on `/about`.
+
+You should now be able to switch between the game view and the about view using the links that are always at the bottom of the page. React Router is often very simple to implement for common use cases (ever since version 4 came out at least).
+
+## Part 2:
