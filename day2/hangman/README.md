@@ -192,6 +192,6 @@ variableHoldingInputField.value // -> is the typed text
 
 After getting over the hurdle of accepting user input (why is that always an obstacle?), you're back in Redux land and can get right back to the flow you've been rehearsing.
 
-You'll be done when you have a Hangman app that lets you pick a type a word that will start a new game, and then you can play the game by guessing letters which causes all the expected behavior to occur.
+You'll be done when you have a Hangman app that lets you type a word that will start a new game, and then you can play the game by guessing letters which causes all the expected behavior to occur.
 
 If you've finished, congratulations!
