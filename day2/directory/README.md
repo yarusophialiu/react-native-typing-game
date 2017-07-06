@@ -1,4 +1,4 @@
-# Pair programming bonus exercise: Directory
+# Pair programming exercise: Directory
 
 ## Goal
 
