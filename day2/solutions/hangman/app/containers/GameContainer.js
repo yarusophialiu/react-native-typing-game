@@ -14,7 +14,7 @@ const GameContainer = ({ stepNumber, currentState, onInput }) => {
             <input type="text"
                 value={''}
                 ref={node => {input = node;}}
-                onChange={() => { onInput(input.value); alert(input.value); } }
+                onChange={() => onInput(input.value) }
             />
         </div>
     );
