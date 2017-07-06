@@ -6,6 +6,11 @@ import Board from '../components/Board';
 
 const GameContainer = ({ badGuesses, wordLetters, onInput }) => {
     let input;
+    // const letterInAnswer = letter => wordLetters.some(
+    //    letterObj => letterObj.letter === letter);
+
+    /* the ref node thing in the code below is another way
+    to handle input in React Forms */
     return (
         <div>
             <Man badGuesses={badGuesses} />

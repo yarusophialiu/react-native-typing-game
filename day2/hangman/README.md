@@ -16,7 +16,7 @@ Let's start by demystifying this gnarly app a little bit together.
 
 1. When you open `server.js`, you may hit a brick wall again in terms of understanding. You can see there's some stuff about webpack dev server in this code, so this might give you some idea that the server is building and serving apps like the webpack dev server you used last week. But other than that, it's probably still unclear how the app works from here.
 
-    There's 2 possible trains of thought that might lead you to a good entry point into the app from here.
+    There are 2 possible trains of thought that might lead you to a good entry point into the app from here.
 
     1. Follow the webpack thread. If webpack isn't itself super scary to you (situations like this are one argument for learning it a little even if you'll never write it yourself), you may be able to skim the `webpack.config.js` file for clues about what it does. We see that there's a production and non-production version of this file, but since we are not running on production we'll look at the latter. If you remember any webpack, you may remember that the `entry` key specifies what file is the topmost level of the frontend code that webpack will have to build, and there we see `/app/index.js`.
 
@@ -66,7 +66,7 @@ As we saw in Part 0 while tracing through the code, a lot of the React Router st
 
 You should now be able to switch between the game view and the about view using the links that are always at the bottom of the page. React Router is often very simple to implement for common use cases (ever since version 4 came out at least).
 
-## Part 2: Dispatching a GUESS event
+## Part 2: Dispatching a BAD_GUESS event
 
 We are going to begin adding in functionality using Redux now.
 
@@ -82,15 +82,17 @@ So it makes sense to start with dispatching. Normally, dispatching an action doe
 
 1. In `mapDispatchToProps`, uncomment the argument so that we will be able to use it.
 
-1. We want the `onInput` function that `GameContainer` gets as a prop to dispatch an action rather than just alert. Let's give that action the `type` `'GUESS'`.
+1. Replace the existing `onInput` key value pair with a new one for `onBadGuess`. Its value should be a function, which `GameContainer` will get as a prop. `onBadGuess` should dispatch an action with `type: 'BAD_GUESS'` when called.
 
-1. The action should also include what letter is being guessed, since the reducer will probably need to know that in the next step. Add into the action a key `letter` that has this info.
+1. The action should also include what letter is being guessed, since the reducer will probably need to know that in the next step. `onBadGuess` should take an argument `inputLetter`, which should get included in the action with key `letter`.
+
+1. Now that `GameContainer` is not getting `onInput` anymore and is instead getting `onBadGuess`, swap the former out for the latter in the `GameContainer`'s JSX. For the moment, every guess will be considered a bad one.
 
 Now go to your app again (it should hot reload if it built successfully) and enter a letter. It should no longer alert, but instead have some effect on the right sidebar. Does what appears there seem like we were successful?
 
-**IF THERE'S TIME ADD INTO HERE STEPS ABOUT MAKING ACTION CREATORS AND EXPORTING ACTION TYPES**
+Note: In a real app you may choose to use what we call `action creators` in your dispatch calls rather than literal actions. It's pretty much the same, but rather than write an action object manually inside dispatch you call a function that returns that action object. This saves you from writing potentially big actions repeatedly, but more importantly it saves you from hunting down each place in the code you wrote an action of a given type if you later decide to change what its `type` is called or something.
 
-## Part 3: Writing reducers
+## Part 3: Writing a badGuesses reducer
 
 The reducer files are where what we call the state shape is defined. This just saying that whether our state is just a number, or an array of strings, or an object with 3 keys that are types XYZ, the reducer is where we would be able to tell. This makes sense since the reducer is responsible for specifying an initial state and returning new ones after actions come in.
 
@@ -103,6 +105,93 @@ That's totally doable. But which is easier: writing a reducer for the full above
 
 1. Go to the `badGuessesReducer` file and start writing a reducer by making a function that takes arguments `state` and `action`. What should the initial state be? Remember how to specify it?
 
-1. In the body of the reducer function, `switch` on `action.type`
+1. In the body of the reducer function, `switch` on `action.type` as you always do. Add a case for the `BAD_GUESS` action type, as well as a default case (which always just returns `state`).
 
-**BAD GUESSES TOTALLY ISNT GONNA WORK, I NEED TO KNOW THE WORD**
+1. In the case for `BAD_GUESS`, we want the new state returned to be 1 greater than the previous state, but we shouldn't modify the previous state because reducers are pure functions and Redux state is immutable. In this case that just means we shouldn't do `state++`, but `state + 1` obviously does what we want.
+
+1. Export this reducer from this file and import it in `index.js` (the one in the `reducers` folder). Then incorporate it into the existing `combineReducers` call. The code you need is in a comment there already.
+
+Now if you interact with your app you should see in the right sidebar that an action is dispatched AND that your new state has changed! But you still don't see the state change on the screen.
+
+## Part 4: Displaying state changes
+
+The final step of the badGuesses flow is to get our state to be what the screen shows at all time. Most of what needs to be done is actually already here, but we can talk about what it's doing a bit.
+
+First off, why isn't the change in state visible? First of all, React doesn't naturally know what the Redux state is. React only rerenders a component when either its `this.state` (NOT Redux state) changes or its `this.props` change. It has no clue what Redux is doing unless Redux feeds into React props somehow. And thats what the `connect` call (enabled by `Provider`) does for you. It feeds things having to do with the Redux state and the Redux dispatch function into a component using the props defined by `mapStateToProps` and `mapDispatchToProps` respectively. At the moment, the prop that will be called `badGuesses` is hardcoded to 0, so it will always be 0.
+
+1. In the `mapStateToProps` in `GameContainer`, uncomment the argument `state`.
+
+1. Have `badGuesses` be the actual current number of guesses in the state rather than 0.
+
+    Note: We just wrote a reducer whose entire state was the integer number of bad guesses, but that is NOT what `state` refers to here! `state` is the actual full state that our app uses, whatever is returned by the reducer that was passed into our app's `createStore` call. If you follow the thread of what this reducer is from `app/index.js` -> `store/configureStore.js` -> `configureStore.dev.js` you'll find it's the one that is returned by the `combineReducers` call in `reducers/index.js`. This means that the number of bad guesses is on `state.badGuesses`.
+
+Now when you type a letter in the input box, the number above the hangman should increase. And as an added surprise, the image displayed should actually become progressively more complete.
+
+Note: In a real app you may choose to use what we call `selectors` rather than have to manually navigate to certain pieces of state in your `mapStateToProps` functions. A selector is just a function exported from your reducer file that finds some piece of information from your state and returns it. This is helpful because it save you from repeatedly writing some complicated series of lookups like `state.x.y.z` when your combined state becomes more complex, and more importantly it saves you from having to rewrite all your `mapStateToProps` functions every time your state shape changes during development.
+
+## Part 5: Correct Guess flow
+
+We're going to repeat a similar process in getting correct guesses working. There will be decreasing amounts of guidance as we get more repetitions in for the Redux data flow.
+
+1. Start by adding another prop to `mapDispatchToProps` called `onGoodGuess`. This should dispatch an action with `type: "GOOD_GUESS"` and a `letter` key just like in the `onBadGuess` prop.
+
+1. Make this prop actually get used by the `GameContainer`. You will need to add it to the list of props to pull out of `GameContainer`'s one and only argument which represents the `props` object. There is a commented out function called `letterInAnswer` provided for you that you can use to determine whether the guessed letter is in the answer or not. Using this function, you can call `onGoodGuess` or `onBadGuess` in the `onChange` handler depending on what letter the user typed.
+
+1. Go to the `reducers/wordLetters.js` file and give it the same treatment you gave `reducers/badGuesses.js`. The difference this time is that both the state and the change to it are a little more complicated. You may find it easiest to make a copy of the existing state that you will be allowed to modify (though you could still choose to get fancy with `slice`s and `Object.assign`s). If an action comes in that looks like `{ type: "GOOD_GUESS", letter: "O"}`, then you want to make sure the new state has the `guessed` field set to `true` for each of the letter objects with `letter: "O"`. Your initial state can be any hardcoded word you want, just be sure all the `guessed` fields start as false. After that's done, be sure it gets included into the `combineReducers` call in `reducers/index.js`.
+
+1. Lastly, change the `GameContainer`'s `mapStateToProps` so that the prop `wordLetters` is actually read out of your app state.
+
+With these steps done correctly, you should be able to play the game of Hangman with your hardcoded word! You're really getting the *HANG* of Redux, huh?
+
+## Part 6: Do more!
+
+More features and less guidance!
+
+### Guessed letters
+
+Normally when playing Hangman you get to look at all the letters you already guessed so that you can more easily think about what the word can and cannot be. Let's add this feature!
+
+So we'll have some new piece of state called `guessedLetters` to track the list of letters that the user has already tried.
+
+1. The actions that would signal that a new letter should get added to `guessedLetters` already exist right? It would just be the `GOOD_GUESS` and `BAD_GUESS` actions that get dispatched when a letter is typed. It is perfectly fine for more than one reducer to have a case for the same action type. So this first step and a half where we normally give the component a prop from `mapDispatchToProps` and having it get called is done without us having done anything.
+
+1. Make a new file in `reducers` called `guessedLettersReducer.js` and do yo' thang. It's perfectly fine for a reducer to do the same thing in response to 2 different action types. Then make sure this reducer gets included in the `combineReducers` call.
+
+  Note: In a `switch` statement, a case that doesn't return or `break` falls down into the next case. So a concise way to write 2 cases that do the same thing is
+
+  ```javascript
+  switch(someVariable) {
+    case "CASE1":
+    case "CASE2":
+      return doSomethingForCase1Or2();
+  }
+  ```
+
+1. In `GameContainer`'s `mapStateToProps`, read this piece of state out so it can be passed into `GameContainer` as a prop. Include the prop name you chose in `GameContainer`'s destructuring argument and add some JSX to display it.
+
+Does it work? Lovely.
+
+### New Game with Chosen Word.
+
+Suss this one out entirely on your own. Hopefully the pattern should be a little familiar by now.
+
+You'll want an input field that you can read the value out of, so you can either copy the unfamiliar `ref` thing being used by `GameContainer` already (probably the easiest, see below for details) or you can write (or copy over) the same React Forms flow you're used to using with `this.state.text` and `handleChange`, etc. That flow used React states, so you may be thinking you should move it into Redux. This is a reasonable thought, and a legitimate option, but there are arguments for why it might not be considered necessary. One might argue that your Redux state should be some representation of you overall app's state, and that the value currently being typed into a text box doesn't really belong there. It was only included in React state in the first place to solve the technical problem of not knowing what was typed in the box when we click on some button beside it.
+
+If you want to copy the ref pattern, it is
+
+```javascript
+let variableHoldingInputField;
+...
+<input
+  ...
+  ref={node => {variableHoldingInputField = node;}}
+/>
+// anywhere you like, such as in a click handler:
+variableHoldingInputField.value // -> is the typed text
+```
+
+After getting over the hurdle of accepting user input (why is that always an obstacle?), you're back in Redux land and can get right back to the flow you've been rehearsing.
+
+You'll be done when you have a Hangman app that lets you pick a type a word that will start a new game, and then you can play the game by guessing letters which causes all the expected behavior to occur.
+
+If you've finished, congratulations!
