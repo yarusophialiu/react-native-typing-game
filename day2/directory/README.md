@@ -52,14 +52,30 @@ The rest of our functionality is all Routes and Links working within the `/direc
 
 Is the app complete? Play around with both it and the online example to see if they match.
 
+## Part 3: Other filters
+
+Right now you can filter by first name by visiting `/directory/FIRSTNAME`, but there's no way to narrow someone down by other fields, like last name or area code. You may wish to add more people to the `ppl` array to test this part out.
+
+1. Add a Route for `directory/surname/LASTNAME` and make this Route display all the users that have the specified surname. You'll have to account for the fact that this Route would normally also match `/directory/:fName/:lName`. A Switch tag should help you to only match one of the two.
+
+1. Add a Route for `directory/areacode/3DIGITAREACODE` with similar logic.
+
+1. Normally search filters like this use the querystring rather than the params. Update the code at this point to use a route like `/directory?fname=darwish&area=222`. Querystrings are not considered while finding a Route with matching `path`, so this Route already exists. You can find its querystring from another special prop supplied by Route `this.props.location` which has a field called `search` with what you are looking for. You can either parse alues out of it yourself with splits or install a querystring parsing library. [Here's a useful small code example](https://github.com/ReactTraining/react-router/issues/4527).
+
+## Part 4: Swiss Army App
+
+Switch up the Home Page to be for Swiss Army App instead of Horizons Directory. We are now going to make it such that Directory is just one of the subapps on this project.
+
+1. Put your other React Router apps into this app as separate subapps. The Home page should be able to take you to the directory app, the chicken contest app, and the hangman app. Once you put an app on `/subapp` you will find that you need to update it's Links and Routes to reflect that fact.
+
+Now you should have a cool app with many features that serves as a mini portfolio!
+
 ## Bonus: Have some fun
 
 You have demonstrated that you can use Routes and Links to make most anything you want to happen come true. Now stretch out some and see what fun you can have when you have the freedom to write whatever routing you want rather than being told to do some specific thing. Here are some ideas if you want inspiration:
 
-1. Put your other React Router apps into this app as separate subapps. It would be cool if the home page had links to the directory app, the chicken contest app, and the hangman app. Then you've got a swiss army app you can show off like a portfolio!
+1. Move more apps into the Swiss Army App, even those that aren't React Router enabled such as TodoApp and TicTacToe. Use Hangman's code as an example of how to make a Redux App into a React Router app. Things to look for are `ConnectedRouter` and the `routing` reducer.
 
-1. Add in routes to `Directory` that let you narrow down listings in ways other than just first name. Perhaps by last name, or area code. If you chose to implement filtering by last name as the route `/directory/surname/:lName` for example, you would need to account for the fact that this normally also matches `/directory/:fName/:lName`. A Switch tag should help you to only match one of the two.
+1. Contrive an excuse to try out some recursive Route nesting and make it another app in the Swiss Army App.
 
-    Note: Normally filtering like this would be in a querystring rather than the route params.
-
-1. Contrive an excuse to try out some recursive nesting.
+1. Write a Route that renders data that has to be fetched from somewhere. The pattern for this is to have the Route render a component which renders `Loading...` before it has any data. That component's `componentDidMount` would request data, which when received would go into your Redux state, causing a rerender which this time displays the data. So navigating to the page should load data, and then switching away and back should already have data right away. You can choose whether the component should fetch every mount in case there's new data or whether it should only fetch the first time when there's no data already in the Redux state.
