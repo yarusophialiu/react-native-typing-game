@@ -9,5 +9,6 @@
 ## Pair programming exercises
 
 [Redux Hangman](hangman)  
-
 [React Router Directory](directory)
+[Bonus: Production Todo-Redux](./todo.md)
+
