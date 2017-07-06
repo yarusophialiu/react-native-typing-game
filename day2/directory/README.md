@@ -50,7 +50,7 @@ The rest of our functionality is all Routes and Links working within the `/direc
 
     Note: We have seen that components rendered with `component={MyComponent}` get passed special props by Route, including one useful prop called `match`. But what about components rendered with Route's `render` prop? Well the function given to `render` can actually take an argument, which will be the an object containing all the props just like `this.props` is in a class component (again, render is actually using the function syntax for writing a component). You can access `match` and other props supplied by Route either by doing `render={(props) => ... }` and using `props.match` inside, or by using object destructuring and doing `render={({ match }) => ... }` and just using `match` inside.
 
-Is the app complete? plat around with both it and the online example to see if they match.
+Is the app complete? Play around with both it and the online example to see if they match.
 
 ## Bonus: Have some fun
 
