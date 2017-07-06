@@ -157,15 +157,15 @@ So we'll have some new piece of state called `guessedLetters` to track the list 
 
 1. Make a new file in `reducers` called `guessedLettersReducer.js` and do yo' thang. It's perfectly fine for a reducer to do the same thing in response to 2 different action types. Then make sure this reducer gets included in the `combineReducers` call.
 
-  Note: In a `switch` statement, a case that doesn't return or `break` falls down into the next case. So a concise way to write 2 cases that do the same thing is
+    Note: In a `switch` statement, a case that doesn't return or `break` falls down into the next case. So a concise way to write 2 cases that do the same thing is
 
-  ```javascript
-  switch(someVariable) {
-    case "CASE1":
-    case "CASE2":
-      return doSomethingForCase1Or2();
-  }
-  ```
+    ```javascript
+    switch(someVariable) {
+      case "CASE1":
+      case "CASE2":
+        return doSomethingForCase1Or2();
+    }
+    ```
 
 1. In `GameContainer`'s `mapStateToProps`, read this piece of state out so it can be passed into `GameContainer` as a prop. Include the prop name you chose in `GameContainer`'s destructuring argument and add some JSX to display it.
 
