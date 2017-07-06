@@ -10,4 +10,4 @@
 
 [Redux Hangman](hangman)  
 
-[Bonus: React Router Directory](directory)
+[React Router Directory](directory)
